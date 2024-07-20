@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit your chat</title>
+</head>
+<body>
+  <h3>Edit your chat: <%= chat._id %></h3>
+  <p>This chat was sent from <%= chat.from %> to <%= chat.to %></p>
+  <form id="editForm" method="POST" action="/chats/<%= chat._id %>?_method=PUT">
+    <input type="hidden" name="_method" value="PUT">
+    <textarea name="msg" rows="6" cols="50"><%= chat.msg %></textarea>
+    <br>
+    <button type="submit">Update</button>
+  </form>
+  
+  <!-- Ensure to include the Axios library -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+  <script>
+    document.getElementById('editForm').addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      // Use axios or a similar library to make a PUT request
+      axios.put(`/chats/<%= chat._id %>`, { message: document.querySelector('textarea[name="msg"]').value })
+        .then(response => {
+          // Handle successful edit (e.g., redirect to chat list)
+          console.log("Chat updated successfully!");
+          window.location.href = "/chats";
+        })
+        .catch(error => {
+          // Handle errors during PUT request
+          console.error("Error updating chat:", error);
+          // You can display an error message to the user
+        });
+    });
+  </script>
+  
+</body>
+</html>
