@@ -1,1 +1,1 @@
-Replication of a chatting app
+Replicate WhatsApp is a project aimed at creating a chat application similar to WhatsApp. Built with Node.js and Express, it includes features for user authentication, real-time messaging, and a user-friendly interface. The application leverages EJS for templating and incorporates CSS for styling. The project structure includes models for managing data, public resources for frontend assets, and views for rendering dynamic pages.
