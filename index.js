@@ -74,10 +74,10 @@ app.get("/chats/:id", async (req, res, next) => {
 app.put("/chats/:id", async (req, res, next) => {
   try {
     let { id } = req.params;
-    let { message } = req.body;
+    let { msg } = req.body;
     const chat = await Chat.findByIdAndUpdate(
       id,
-      { msg: message }, // Update the message field
+      { msg: msg }, // Update the message field
       { runValidators: true, new: true } // Validate and return the updated document
     );
     console.log(chat);
