@@ -14,28 +14,5 @@
     <br>
     <button type="submit">Update</button>
   </form>
-  
-  <!-- Ensure to include the Axios library -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-  <script>
-    document.getElementById('editForm').addEventListener('submit', (event) => {
-      event.preventDefault(); // Prevent default form submission
-
-      // Use axios or a similar library to make a PUT request
-      axios.put(`/chats/<%= chat._id %>`, { message: document.querySelector('textarea[name="msg"]').value })
-        .then(response => {
-          // Handle successful edit (e.g., redirect to chat list)
-          console.log("Chat updated successfully!");
-          window.location.href = "/chats";
-        })
-        .catch(error => {
-          // Handle errors during PUT request
-          console.error("Error updating chat:", error);
-          // You can display an error message to the user
-        });
-    });
-  </script>
-  
 </body>
 </html>
